@@ -126,30 +126,10 @@
   gap: 14px;
   position: sticky;
   top: 72px;
+  height: calc(100vh - 84px);
   max-height: calc(100vh - 84px);
-  overflow-y: auto;
+  overflow: hidden;
   padding: 2px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(144,164,174,0.35) transparent;
-}
-
-.catalog-sidebar::-webkit-scrollbar {
-  width: 5px;
-}
-
-.catalog-sidebar::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 4px 0;
-}
-
-.catalog-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(144,164,174,0.35);
-  border-radius: 99px;
-  transition: background 0.2s;
-}
-
-.catalog-sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(144,164,174,0.55);
 }
 
 .catalog-main {
@@ -163,6 +143,10 @@
   border: 1px solid var(--wpw-border);
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  max-height: 50%;
+  min-height: 120px;
 }
 
 .category-tree-header {
@@ -175,10 +159,31 @@
   background: linear-gradient(to bottom, #f8fafc, var(--wpw-light-gray));
   border-bottom: 1px solid var(--wpw-border);
   border-radius: 8px 8px 0 0;
+  flex-shrink: 0;
 }
 
 .category-tree-list {
   padding: 6px 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(144,164,174,0.35) transparent;
+}
+
+.category-tree-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.category-tree-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.category-tree-list::-webkit-scrollbar-thumb {
+  background: rgba(144,164,174,0.35);
+  border-radius: 99px;
+}
+
+.category-tree-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(144,164,174,0.55);
 }
 
 .category-tree-item {
@@ -295,8 +300,11 @@
   background: #fff;
   border: 1px solid var(--wpw-border);
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
 }
 
 .filters-header {
@@ -308,9 +316,11 @@
   color: var(--wpw-mid-gray);
   background: linear-gradient(to bottom, #f8fafc, var(--wpw-light-gray));
   border-bottom: 1px solid var(--wpw-border);
+  border-radius: 8px 8px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .filters-clear-btn {
@@ -333,6 +343,26 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(144,164,174,0.35) transparent;
+}
+
+.filters-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.filters-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filters-body::-webkit-scrollbar-thumb {
+  background: rgba(144,164,174,0.35);
+  border-radius: 99px;
+}
+
+.filters-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(144,164,174,0.55);
 }
 
 /* Compact form controls inside sidebar */

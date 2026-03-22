@@ -122,10 +122,15 @@ export function getOperationProducts(code, locale = 'en', page = 1, perPage = 48
   return request(`/operations/${encodeURIComponent(code)}/products?${buildQuery({ locale, page, perPage })}`);
 }
 
+export function getExportPreview(locale = 'en', filters = {}, page = 1, perPage = 20) {
+  const params = { locale, ...filters, page, perPage };
+  return request(`/export/preview?${buildQuery(params)}`);
+}
+
 export async function exportProducts(format, locale = 'en', extraFilters = {}) {
   const params = { format, locale, ...extraFilters };
   const url = `${BASE}/export?${buildQuery(params)}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { headers: { ...getAuthHeaders() } });
   if (!res.ok) throw new Error(`Export failed: HTTP ${res.status}`);
   const blob = await res.blob();
   const disposition = res.headers.get('content-disposition') || '';
